@@ -1,0 +1,26 @@
+:root {
+    --moveX-half: -25vw;
+    --moveX-full: -50vw;
+    --moveY: -40vh;
+    --scale-half:0.8;
+    --scale-full:0.5;
+    --scale:0.5
+}
+
+@media (max-width: 768px) { /* Tablet */
+    :root {
+        --moveX-half: -15vw;
+        --moveX-full: -30vw;
+        --moveY: -20vh;
+    }
+}
+
+@media (max-width: 480px) { /* Mobile */
+    :root {
+        --moveX-half: -25vw;
+        --moveX-full: -50vw;
+        --moveY: -40vh;
+        --scale-half:0.4;
+        --scale-full:0.3;
+    }
+}

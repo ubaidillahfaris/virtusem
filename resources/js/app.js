@@ -1,4 +1,5 @@
 import '../css/app.css';
+import '../css/custom.css'
 import './bootstrap';
 
 import { createInertiaApp } from '@inertiajs/vue3';
@@ -6,6 +7,7 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createApp, h } from 'vue';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy';
 import onScroll from "./onScroll";
+import router from './router';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -19,7 +21,8 @@ createInertiaApp({
     setup({ el, App, props, plugin }) {
         const app = createApp({ render: () => h(App, props) })
             .use(plugin)
-            .use(ZiggyVue);
+            .use(ZiggyVue)
+            .use(router);
 
         app.directive("onscroll", onScroll);
         app.mount(el);

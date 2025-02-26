@@ -7,10 +7,8 @@
 
         <!-- Desktop Menu -->
         <div class="hidden md:flex flex-row space-x-6 uppercase">
-            <NavLink>Home</NavLink>
-            <NavLink>Products</NavLink>
-            <NavLink>Service</NavLink>
-            <NavLink>Connect</NavLink>
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/service">Service</NavLink>
         </div>
 
         <!-- Button -->
@@ -30,11 +28,9 @@
                     leave-active-class="transform transition duration-300 ease-in-out opacity-0">
             <div v-if="isMenuOpen" class="absolute top-16 left-0 w-full z-50
              bg-mainBackground text-white p-6 flex flex-col space-y-4 md:hidden">
-                <NavLink @click="toggleMenu">Home</NavLink>
-                <NavLink @click="toggleMenu">Products</NavLink>
-                <NavLink @click="toggleMenu">Service</NavLink>
-                <NavLink @click="toggleMenu">Connect</NavLink>
-                <Button @click="toggleMenu">Subscribe</Button>
+             <NavLink @click="toggleMenu" to="/">Home</NavLink>
+             <NavLink @click="toggleMenu" to="/service">Service</NavLink>
+            <Button >Subscribe</Button>
             </div>
         </transition>
     </nav>

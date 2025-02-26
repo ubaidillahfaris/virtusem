@@ -1,0 +1,150 @@
+<template>
+<div class="w-full min-h-screen relative overflow-hidden flex justify-center items-start">
+    <div class="absolute opacity-15 md:opacity-20 bg-accent w-96 h-80 -top-12 -left-48 blur-3xl rounded-full z-0"></div>
+    <div class="absolute opacity-10 md:opacity-10 bg-accent w-96 h-80 bottom-10 -right-48 blur-3xl rounded-full z-0">
+    </div>
+    <div class="absolute group-hover:blur-sm transition duration-300 delay-75 
+    ease-in-out top-0 z-0 object-cover opacity-20 w-full h-screen"
+        :style="`background-image: url('storage/Line BG.svg');`" />
+
+    <div class="w-full min-h-96 flex flex-col justify-center items-center space-y-6">
+        <transition enter-active-class="animate-fadeIn" leave-active-class="animate-fadeOut">
+            <div v-if="showTitle"
+                class="animate-slideYIn delay-300 duration-200 ease-in-out flex flex-row space-x-2 justify-center items-center w-full">
+                <Stripe></Stripe>
+                <p class="text-white">Digging deeper</p>
+                <Stripe></Stripe>
+            </div>
+        </transition>
+        <transition enter-active-class="animate-fadeIn" leave-active-class="animate-fadeOut">
+            <div v-if="showSubTitle" class="w-full animate-slideYIn delay-300 duration-200 ease-in-out">
+                <p class="text-4xl text-white text-center">
+                    Our Services
+                </p>
+            </div>
+
+        </transition>
+        
+        
+        <div class="grid grid-cols-1 gap-12 p-6 w-full">
+
+            <div class="relative z-20 grid grid-cols-1 md:grid-flow-row md:grid-cols-2 gap-6 w-full">
+                <div class="h-full w-full">
+                    
+                </div>
+                <div class="min-h-64 w-full flex flex-col 
+                items-start justify-center space-y-4 relative">
+                    <p class="absolute top-0 
+                        text-2xl text-white text-center w-full 
+                        animate-slideYIn ease-in-out flex flex-row space-x-2 
+                        justify-center items-center" v-if="realtimeAppSection.title">
+                        Realtime App
+                    </p>
+                    <p class="absolute top-10 
+                        text-lg animate-slideYIn delay-1200 duration-200 ease-in-out 
+                        text-center" v-if="realtimeAppSection.subtitle">
+                        <span class="text-accent">Don't Let Slow Systems </span>
+                        <span class="text-white">Hold Your Business Back – Build a Real-Time Application Today!</span>
+                    </p>
+
+                    <p class="absolute top-28 
+                        animate-slideYIn delay-1200 duration-200 ease-in-out 
+                        text-center" v-if="realtimeAppSection.description">
+                        <span class="text-white">
+                            Our real-time application development services ensure that your business stays ahead. Using cutting-edge technologies like WebSocket, Firebase, and event-driven architectures, we create ultra-fast, interactive applications that keep users engaged and satisfied.
+                        </span>
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="relative z-20 grid grid-cols-1 md:grid-flow-row md:grid-cols-2 gap-6 w-full">
+                
+                <div class="min-h-64 w-full flex flex-col 
+                items-start justify-center space-y-4 relative">
+                    <p class="absolute top-0 
+                        text-2xl text-white text-center w-full 
+                        animate-slideYIn ease-in-out flex flex-row space-x-2 
+                        justify-center items-center" v-if="systemInformationSection.title">
+                        Information System
+                    </p>
+                    <p class="absolute top-10 
+                        text-lg animate-slideYIn delay-1200 duration-200 ease-in-out 
+                        text-center" v-if="systemInformationSection.subtitle">
+                        <span class="text-accent">Stop Wasting Time </span>
+                        <span class="text-white">with Inefficient Systems – Upgrade to a Smart Information System Today!</span>
+                    </p>
+
+                    <p class="absolute top-28 
+                        animate-slideYIn delay-1200 duration-200 ease-in-out 
+                        text-center text-white" v-if="systemInformationSection.description">
+                        <span class="">
+                            Outdated and disorganized business processes slow you down, waste resources, and frustrate your team. If your current system relies on 
+                        </span>
+                        <span class="text-accent">manual work</span>, <span class="text-accent">scattered data</span>, or <span class="text-accent">constant errors</span>, you’re already falling behind.
+                    </p>
+                </div>
+
+            </div>
+            <Footer></Footer>
+
+        </div>
+
+    </div>
+    <!-- Objek Kiri -->
+    <div class="absolute top-0 w-[700px] h-[1200px] bg-cover 
+        z-0 animate-moveToLeft" :style="`--translate-distance: 200px;
+        background-image: url('storage/Gunungan.svg');`">
+    </div>
+
+    <!-- Objek Kanan -->
+    <div class="absolute top-0 w-[700px] h-[1200px] bg-cover 
+        z-0 animate-moveToRight" :style="`--translate-distance: 200px;
+        background-image: url('storage/Gunungan.svg');`">
+    </div>
+
+</div>
+</template>
+
+<script>
+import Navbar from '@/Components/Navbar.vue';
+import App from './App.vue';
+import Stripe from '@/Components/Stripe.vue';
+import Footer from '@/Components/Footer.vue';
+
+export default {
+    components: { Navbar, App, Stripe, Footer },
+    data() {
+        return {
+            showTitle: false,
+            showSubTitle: false,
+            realtimeAppSection: {
+                title: false,
+                subtitle: false,
+                description: false
+            },
+            systemInformationSection:{
+                title: false,
+                subtitle: false,
+                description: false
+            }
+        }
+    },
+    mounted() {
+        setTimeout(() => { this.showTitle = true; }, 500);
+        setTimeout(() => { this.showSubTitle = true; }, 550);
+
+        Object.keys(this.realtimeAppSection).forEach((key, index) => {
+            setTimeout(() => {
+                this.realtimeAppSection[key] = true;
+            }, (index + 1) * 600)
+        });
+
+        Object.keys(this.systemInformationSection).forEach((key, index) => {
+            setTimeout(() => {
+                this.systemInformationSection[key] = true;
+            }, (index + 1) * 800);
+        });
+    }
+}
+</script>

@@ -2,7 +2,7 @@
 <div class="w-full h-screen md:min-h-[80vh] grid grid-cols-1 md:grid-flow-row md:grid-cols-2 gap-6">
     <!-- left hero -->
     <div class="md:relative md:overflow-y-hidden">
-        <div class="absolute opacity-15 md:opacity-40 bg-accent w-96 h-80 -top-12 -left-12 blur-3xl rounded-full z-0"></div>
+        <div class="absolute opacity-15 md:opacity-20 bg-accent w-96 h-80 -top-12 -left-12 blur-3xl rounded-full z-0"></div>
         <div class="px-8 py-8 relative grid grid-cols-1 gap-6 z-30">
 
             <transition enter-active-class="animate-slideXIn" leave-active-class="animate-slideXOut">
@@ -43,9 +43,11 @@
 
             <transition enter-active-class="animate-slideYIn" leave-active-class="animate-slideYOut">
                 <div v-if="showRegisterButton" class="flex flex-row justify-center md:justify-start">
-                    <Button :type="'accent' ">
-                        Register Now
-                    </Button>
+                    <RouterLink to="/service">
+                        <Button :type="'accent' ">
+                            Our Services
+                        </Button>
+                    </RouterLink>
                 </div>
             </transition>
         </div>

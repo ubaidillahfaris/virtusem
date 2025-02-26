@@ -23,6 +23,7 @@
     "dependencies": {
         "moment": "^2.30.1",
         "tailwindcss-gradients": "^3.0.0",
-        "vue-observe-visibility": "^1.0.0"
+        "vue-observe-visibility": "^1.0.0",
+        "vue-router": "^4.5.0"
     }
 }

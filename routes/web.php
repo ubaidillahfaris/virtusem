@@ -15,8 +15,9 @@ Route::middleware(['throttle:global'])->group(function () {
             return new WelcomeEmail($user);
         });
         
+        
         Route::get('/', function () {
-            return Inertia::render('Welcome', [
+            return Inertia::render('App', [
                 'canLogin' => Route::has('login'),
                 'canRegister' => Route::has('register'),
                 'laravelVersion' => Application::VERSION,
