@@ -67,6 +67,11 @@ export default {
                     "0%": { transform: "translateY(0)", opacity: "1" },
                     "100%": { transform: "translateY(10px)", opacity: "0" },
                 },
+                shake: {
+                    "0%, 100%": { transform: "translateX(0)" },
+                    "10%, 30%, 50%, 70%, 90%": { transform: "translateX(-5px)" },
+                    "20%, 40%, 60%, 80%": { transform: "translateX(5px)" },
+                },
             },
             animation: {
                 moveToLeft: "moveToLeft 0.8s cubic-bezier(0.8, 0.0, 0.2, 1) forwards",
@@ -79,6 +84,7 @@ export default {
                 slideXROut: "slideXROut 0.5s ease-in-out forwards",
                 slideYIn: "slideYIn 0.5s ease-in-out forwards",
                 slideYOut: "slideYOut 0.5s ease-in-out forwards",
+                shake: "shake 0.5s ease-in-out",
             },
         },
     },

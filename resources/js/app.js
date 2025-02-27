@@ -8,7 +8,9 @@ import { createApp, h } from 'vue';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy';
 import onScroll from "./onScroll";
 import router from './router';
-
+import { Icon } from '@iconify/vue';
+import VueApexCharts from 'vue3-apexcharts';
+import { createPinia } from 'pinia';
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
 createInertiaApp({
@@ -19,10 +21,14 @@ createInertiaApp({
             import.meta.glob('./Pages/**/*.vue'),
         ),
     setup({ el, App, props, plugin }) {
+        const pinia = createPinia();
         const app = createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue)
-            .use(router);
+            .use(router)
+            .use(pinia)
+            .use(VueApexCharts)
+            .component('Icon', Icon);
 
         app.directive("onscroll", onScroll);
         app.mount(el);

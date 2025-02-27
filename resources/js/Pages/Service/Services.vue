@@ -28,9 +28,10 @@
         
         <div class="grid grid-cols-1 gap-12 p-6 w-full">
 
-            <div class="relative z-20 grid grid-cols-1 md:grid-flow-row md:grid-cols-2 gap-6 w-full">
-                <div class="h-full w-full">
-                    
+            <div class="relative z-20 grid grid-cols-1 md:grid-flow-row md:grid-cols-2 gap-6 w-full
+            items-center">
+                <div class="min-h-[400px] w-full flex justify-center">
+                    <BookingRealtime></BookingRealtime>
                 </div>
                 <div class="min-h-64 w-full flex flex-col 
                 items-start justify-center space-y-4 relative">
@@ -49,16 +50,17 @@
 
                     <p class="absolute top-28 
                         animate-slideYIn delay-1200 duration-200 ease-in-out 
-                        text-center" v-if="realtimeAppSection.description">
-                        <span class="text-white">
-                            Our real-time application development services ensure that your business stays ahead. Using cutting-edge technologies like WebSocket, Firebase, and event-driven architectures, we create ultra-fast, interactive applications that keep users engaged and satisfied.
-                        </span>
+                        text-center text-white" v-if="realtimeAppSection.description">
+                        Our real-time application development services ensure that your business stays ahead. Using cutting-edge technologies like
+                        <span class="text-accent"> WebSocket</span>, <span class="text-accent"> Firebase</span>, and <span class="text-accent"> event-driven architectures</span>, we create ultra-fast, interactive applications that keep users engaged and satisfied.
+                        
                     </p>
                 </div>
             </div>
 
 
-            <div class="relative z-20 grid grid-cols-1 md:grid-flow-row md:grid-cols-2 gap-6 w-full">
+            
+            <div class="relative mt-20 z-20 grid grid-cols-1 md:grid-flow-row md:grid-cols-2 gap-6 items-center w-full">
                 
                 <div class="min-h-64 w-full flex flex-col 
                 items-start justify-center space-y-4 relative">
@@ -85,9 +87,12 @@
                     </p>
                 </div>
 
+                <div>
+                    <apexchart class="w-full" type="area" :options="chartOptions" :series="series"></apexchart>
+                </div>
+
             </div>
             <Footer></Footer>
-
         </div>
 
     </div>
@@ -108,12 +113,22 @@
 
 <script>
 import Navbar from '@/Components/Navbar.vue';
-import App from './App.vue';
+import App from '../App.vue';
 import Stripe from '@/Components/Stripe.vue';
 import Footer from '@/Components/Footer.vue';
-
+import BookingRealtime from './BookingRealtime.vue';
+import { useServiceChart } from '@/Store/ServiceChart';
 export default {
-    components: { Navbar, App, Stripe, Footer },
+    components: { Navbar, App, Stripe, Footer,BookingRealtime },
+    setup() {
+        const { chartOptions } = useServiceChart();
+
+        const series = [{
+            name: 'Sold',
+            data: Array.from({ length: 12 }, () => Math.floor(Math.random() * 100))
+        }]
+        return { chartOptions, series }
+    },
     data() {
         return {
             showTitle: false,
@@ -131,6 +146,7 @@ export default {
         }
     },
     mounted() {
+        
         setTimeout(() => { this.showTitle = true; }, 500);
         setTimeout(() => { this.showSubTitle = true; }, 550);
 
@@ -148,3 +164,12 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+::ng-deep .apexcharts-grid {
+  stroke-width: 0.1px !important;
+}
+::ng-deep .apexcharts-grid-borders {
+  stroke-width: 0.1px !important;
+}
+</style>

@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import HomeView from './Pages/Welcome.vue'
-import ServiceView from './Pages/Services.vue'
+import ServiceView from './Pages/Service/Services.vue'
 
 const routes = [
   { path: '/', component: HomeView }, // Route utama (index)

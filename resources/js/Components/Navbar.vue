@@ -13,7 +13,7 @@
 
         <!-- Button -->
         <div class="hidden md:block">
-            <Button>Subscribe</Button>
+            <!-- <Button>Subscribe</Button> -->
         </div>
 
         <!-- Burger Menu (Mobile) -->
@@ -30,7 +30,7 @@
              bg-mainBackground text-white p-6 flex flex-col space-y-4 md:hidden">
              <NavLink @click="toggleMenu" to="/">Home</NavLink>
              <NavLink @click="toggleMenu" to="/service">Service</NavLink>
-            <Button >Subscribe</Button>
+            <!-- <Button >Subscribe</Button> -->
             </div>
         </transition>
     </nav>
