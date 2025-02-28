@@ -48,7 +48,7 @@
                         <span class="text-white">Hold Your Business Back – Build a Real-Time Application Today!</span>
                     </p>
 
-                    <p class="absolute top-28 
+                    <p class="absolute top-36 sm:top-28 
                         animate-slideYIn delay-1200 duration-200 ease-in-out 
                         text-center text-white" v-if="realtimeAppSection.description">
                         Our real-time application development services ensure that your business stays ahead. Using
@@ -81,7 +81,7 @@
                             Today!</span>
                     </p>
 
-                    <p class="absolute top-28 
+                    <p class="absolute top-36 sm:top-28 
                         animate-slideYIn delay-1200 duration-200 ease-in-out 
                         text-center text-white" v-if="systemInformationSection.description">
                         <span class="">
@@ -93,7 +93,7 @@
                     </p>
                 </div>
 
-                <div>
+                <div class="mt-10">
                     <apexchart class="w-full" type="area" :options="chartOptions" :series="series"></apexchart>
                 </div>
 

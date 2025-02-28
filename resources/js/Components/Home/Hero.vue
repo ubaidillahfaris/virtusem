@@ -1,5 +1,5 @@
 <template>
-<div class="w-full h-screen md:min-h-[80vh] grid grid-cols-1 md:grid-flow-row md:grid-cols-2 gap-6">
+<div class="w-full max-h-screen md:min-h-[80vh] grid grid-cols-1 md:grid-flow-row md:grid-cols-2 gap-6">
     <!-- left hero -->
     <div class="md:relative md:overflow-y-hidden">
         <div class="absolute opacity-15 md:opacity-20 bg-accent w-96 h-80 -top-12 -left-12 blur-3xl rounded-full z-0"></div>
@@ -56,7 +56,7 @@
 
     <!-- rigth hero -->
     <div class="relative md:overflow-hidden group">
-        <div class="flex justify-end p-8 ">
+        <div class="flex justify-end md:p-8 ">
             <div class="grid grid-cols-1 gap-6 max-sm:min-h-64 w-[32rem] z-20">
 
                 <transition enter-active-class="animate-slideXRIn" leave-active-class="animate-slideXROut">

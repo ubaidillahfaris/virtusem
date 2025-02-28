@@ -1,12 +1,12 @@
 <template>
     <div class="border border-accent space-y-4 p-3 mx-1 mb-2 rounded-lg">
         <div class="w-full bg-darkBackground p-12 rounded-sm space-y-4">
-            <div class="flex flex-row space-x-2 justify-center items-center text-white">
+            <div class="flex flex-row space-x-1 text-center sm:space-x-2 justify-center items-center text-white">
                 <Stripe></Stripe>
                 <p>Available For New Project</p>
                 <Stripe></Stripe>
             </div>
-            <p class="text-5xl p-2 bg-gradient-to-r from-[#FFFFFF] to-[#767585] 
+            <p class="text-2xl sm:text-5xl p-2 bg-gradient-to-r from-[#FFFFFF] to-[#767585] 
             bg-clip-text text-transparent text-center">
                 Interested in Working Together?
             </p>
