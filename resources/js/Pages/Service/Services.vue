@@ -106,7 +106,7 @@
     <div ref="gununganContainer" class="absolute top-0 left-0 right-0 w-full min-h-screen">
         <div v-for="(image, index) in gununganImages" :key="index" 
             class="absolute top-0 w-[700px] h-[1200px] bg-cover z-0 transition-opacity duration-1000"
-            :class="index === 0 ? 'left-[25vw] animate-moveToLeft' : 'right-[25vw] animate-moveToRight'"
+            :class="index === 0 ? '-left-[15vh] sm:left-[25vw] animate-moveToLeft' : '-right-[15vh] sm:right-[25vw] animate-moveToRight'"
             :style="`background-image: url('${image}')`">
         </div>
     </div>

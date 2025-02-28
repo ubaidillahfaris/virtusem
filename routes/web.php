@@ -16,7 +16,7 @@ Route::middleware(['throttle:global'])->group(function () {
         });
         
         
-        Route::get('/', function () {
+        Route::get('/{any}',  function () {
             return Inertia::render('App', [
                 'canLogin' => Route::has('login'),
                 'canRegister' => Route::has('register'),
@@ -34,7 +34,8 @@ Route::middleware(['throttle:global'])->group(function () {
             Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
             Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
         });
-        
-        
-    });
+
+    
+});
+
 require __DIR__.'/auth.php';

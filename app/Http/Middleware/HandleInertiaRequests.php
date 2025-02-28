@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Inertia\Middleware;
+use Throwable;
 use Tighten\Ziggy\Ziggy;
 
 class HandleInertiaRequests extends Middleware
@@ -41,5 +42,18 @@ class HandleInertiaRequests extends Middleware
                 'location' => $request->url(),
             ],
         ];
+    }
+
+    public function render($request, Throwable $e)
+    {
+        if ($request->inertia()) {
+            $status = $e->getCode() ?: 500;
+
+            return inertia('Error', ['status' => $status])
+                ->toResponse($request)
+                ->setStatusCode($status);
+        }
+
+        return parent::render($request, $e);
     }
 }

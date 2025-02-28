@@ -2,10 +2,12 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import HomeView from './Pages/Welcome.vue'
 import ServiceView from './Pages/Service/Services.vue'
+import Error404 from './Pages/404.vue'
 
 const routes = [
-  { path: '/', component: HomeView }, // Route utama (index)
-  { path: '/service', component: ServiceView }, // Route layanan
+  { path: '/', component: HomeView },
+  { path: '/service', component: ServiceView },
+  { path: '/:catchAll(.*)', name: 'NotFound', component: Error404 } 
 ]
 
 const router = createRouter({
