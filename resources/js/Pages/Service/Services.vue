@@ -34,7 +34,7 @@
                     <BookingRealtime></BookingRealtime>
                 </div>
                 <div class="min-h-64 w-full flex flex-col 
-                items-start justify-center space-y-4 relative">
+                items-start justify-center relative">
                     <p class="absolute top-0 
                         text-2xl text-white text-center w-full 
                         animate-slideYIn ease-in-out flex flex-row space-x-2 
@@ -48,7 +48,7 @@
                         <span class="text-white">Hold Your Business Back – Build a Real-Time Application Today!</span>
                     </p>
 
-                    <p class="absolute top-36 sm:top-28 
+                    <p class="absolute top-28 
                         animate-slideYIn delay-1200 duration-200 ease-in-out 
                         text-center text-white" v-if="realtimeAppSection.description">
                         Our real-time application development services ensure that your business stays ahead. Using
@@ -66,7 +66,7 @@
             <div class="relative mt-20 z-20 grid grid-cols-1 md:grid-flow-row md:grid-cols-2 gap-6 items-center w-full">
 
                 <div class="min-h-64 w-full flex flex-col 
-                items-start justify-center space-y-4 relative">
+                items-start justify-center relative">
                     <p class="absolute top-0 
                         text-2xl text-white text-center w-full 
                         animate-slideYIn ease-in-out flex flex-row space-x-2 

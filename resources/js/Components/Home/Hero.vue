@@ -1,5 +1,5 @@
 <template>
-<div class="w-full max-h-screen md:min-h-[80vh] grid grid-cols-1 md:grid-flow-row md:grid-cols-2 gap-6">
+<div class="w-full h-screen md:min-h-[80vh] grid grid-cols-1 md:grid-flow-row md:grid-cols-2 gap-6">
     <!-- left hero -->
     <div class="md:relative md:overflow-y-hidden">
         <div class="absolute opacity-15 md:opacity-20 bg-accent w-96 h-80 -top-12 -left-12 blur-3xl rounded-full z-0"></div>
