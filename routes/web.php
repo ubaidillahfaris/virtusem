@@ -23,7 +23,7 @@ Route::middleware(['throttle:global'])->group(function () {
                 'laravelVersion' => Application::VERSION,
                 'phpVersion' => PHP_VERSION,
             ]);
-        });
+        })->where('any', '.*');
         
         Route::get('/dashboard', function () {
             return Inertia::render('Dashboard');

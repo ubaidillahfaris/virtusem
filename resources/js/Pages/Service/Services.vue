@@ -7,7 +7,7 @@
     ease-in-out top-0 z-0 object-cover opacity-20 w-full h-screen"
         :style="`background-image: url('storage/Line BG.svg');`" />
 
-    <div v-if="loadedGunungan" class="w-full min-h-96 flex flex-col justify-center items-center space-y-6">
+    <div v-if="loadedGunungan" class="w-full min-h-96 flex flex-col justify-center items-center space-y-6 mt-6">
         <transition enter-active-class="animate-fadeIn" leave-active-class="animate-fadeOut">
             <div v-if="showTitle"
                 class="animate-slideYIn delay-300 duration-200 ease-in-out flex flex-row space-x-2 justify-center items-center w-full">
