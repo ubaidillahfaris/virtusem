@@ -7,7 +7,7 @@
     ease-in-out top-0 z-0 object-cover opacity-20 w-full h-screen"
         :style="`background-image: url('storage/Line BG.svg');`" />
 
-    <div class="w-full min-h-96 flex flex-col justify-center items-center space-y-6">
+    <div v-if="loadedGunungan" class="w-full min-h-96 flex flex-col justify-center items-center space-y-6">
         <transition enter-active-class="animate-fadeIn" leave-active-class="animate-fadeOut">
             <div v-if="showTitle"
                 class="animate-slideYIn delay-300 duration-200 ease-in-out flex flex-row space-x-2 justify-center items-center w-full">
@@ -24,8 +24,8 @@
             </div>
 
         </transition>
-        
-        
+
+
         <div class="grid grid-cols-1 gap-12 p-6 w-full">
 
             <div class="relative z-20 grid grid-cols-1 md:grid-flow-row md:grid-cols-2 gap-6 w-full
@@ -51,17 +51,20 @@
                     <p class="absolute top-28 
                         animate-slideYIn delay-1200 duration-200 ease-in-out 
                         text-center text-white" v-if="realtimeAppSection.description">
-                        Our real-time application development services ensure that your business stays ahead. Using cutting-edge technologies like
-                        <span class="text-accent"> WebSocket</span>, <span class="text-accent"> Firebase</span>, and <span class="text-accent"> event-driven architectures</span>, we create ultra-fast, interactive applications that keep users engaged and satisfied.
-                        
+                        Our real-time application development services ensure that your business stays ahead. Using
+                        cutting-edge technologies like
+                        <span class="text-accent"> WebSocket</span>, <span class="text-accent"> Firebase</span>, and
+                        <span class="text-accent"> event-driven architectures</span>, we create ultra-fast, interactive
+                        applications that keep users engaged and satisfied.
+
                     </p>
                 </div>
             </div>
 
 
-            
+
             <div class="relative mt-20 z-20 grid grid-cols-1 md:grid-flow-row md:grid-cols-2 gap-6 items-center w-full">
-                
+
                 <div class="min-h-64 w-full flex flex-col 
                 items-start justify-center space-y-4 relative">
                     <p class="absolute top-0 
@@ -74,16 +77,19 @@
                         text-lg animate-slideYIn delay-1200 duration-200 ease-in-out 
                         text-center" v-if="systemInformationSection.subtitle">
                         <span class="text-accent">Stop Wasting Time </span>
-                        <span class="text-white">with Inefficient Systems – Upgrade to a Smart Information System Today!</span>
+                        <span class="text-white">with Inefficient Systems – Upgrade to a Smart Information System
+                            Today!</span>
                     </p>
 
                     <p class="absolute top-28 
                         animate-slideYIn delay-1200 duration-200 ease-in-out 
                         text-center text-white" v-if="systemInformationSection.description">
                         <span class="">
-                            Outdated and disorganized business processes slow you down, waste resources, and frustrate your team. If your current system relies on 
+                            Outdated and disorganized business processes slow you down, waste resources, and frustrate
+                            your team. If your current system relies on
                         </span>
-                        <span class="text-accent">manual work</span>, <span class="text-accent">scattered data</span>, or <span class="text-accent">constant errors</span>, you’re already falling behind.
+                        <span class="text-accent">manual work</span>, <span class="text-accent">scattered data</span>,
+                        or <span class="text-accent">constant errors</span>, you’re already falling behind.
                     </p>
                 </div>
 
@@ -96,17 +102,25 @@
         </div>
 
     </div>
-    <!-- Objek Kiri -->
-    <div class="absolute top-0 w-[700px] h-[1200px] bg-cover 
-        z-0 animate-moveToLeft" :style="`--translate-distance: 200px;
-        background-image: url('storage/Gunungan.svg');`">
-    </div>
 
-    <!-- Objek Kanan -->
-    <div class="absolute top-0 w-[700px] h-[1200px] bg-cover 
-        z-0 animate-moveToRight" :style="`--translate-distance: 200px;
-        background-image: url('storage/Gunungan.svg');`">
+    <div ref="gununganContainer" class="absolute top-0 left-0 right-0 w-full min-h-screen">
+        <div v-for="(image, index) in gununganImages" :key="index" 
+            class="absolute top-0 w-[700px] h-[1200px] bg-cover z-0 transition-opacity duration-1000"
+            :class="index === 0 ? 'left-[25vw] animate-moveToLeft' : 'right-[25vw] animate-moveToRight'"
+            :style="`background-image: url('${image}')`">
+        </div>
     </div>
+    <!-- Objek Kiri -->
+    <!-- <img src="storage/Gunungan.svg" 
+        class="absolute top-0 w-[700px] h-[1200px] bg-cover z-0 animate-moveToLeft" 
+        @load="loadedGunungan = true" 
+        style="--translate-distance: 200px;"> -->
+
+    <!-- Gunungan Kanan -->
+    <!-- <img src="storage/Gunungan.svg" 
+        class="absolute top-0 w-[700px] h-[1200px] bg-cover z-0 animate-moveToRight"
+        @load="loadedGunungan = true" 
+        style="--translate-distance: 200px;"> -->
 
 </div>
 </template>
@@ -119,7 +133,7 @@ import Footer from '@/Components/Footer.vue';
 import BookingRealtime from './BookingRealtime.vue';
 import { useServiceChart } from '@/Store/ServiceChart';
 export default {
-    components: { Navbar, App, Stripe, Footer,BookingRealtime },
+    components: { Navbar, App, Stripe, Footer, BookingRealtime },
     setup() {
         const { chartOptions } = useServiceChart();
 
@@ -138,38 +152,58 @@ export default {
                 subtitle: false,
                 description: false
             },
-            systemInformationSection:{
+            systemInformationSection: {
                 title: false,
                 subtitle: false,
                 description: false
-            }
+            },
+            loadedGunungan: false,
+            gununganImages: []
         }
     },
     mounted() {
-        
-        setTimeout(() => { this.showTitle = true; }, 500);
-        setTimeout(() => { this.showSubTitle = true; }, 550);
+        this.loadGunungan();
 
-        Object.keys(this.realtimeAppSection).forEach((key, index) => {
+        if (this.loadedGunungan) {
             setTimeout(() => {
-                this.realtimeAppSection[key] = true;
-            }, (index + 1) * 600)
-        });
+                setTimeout(() => { this.showTitle = true; }, 500);
+                setTimeout(() => { this.showSubTitle = true; }, 550);
 
-        Object.keys(this.systemInformationSection).forEach((key, index) => {
-            setTimeout(() => {
-                this.systemInformationSection[key] = true;
-            }, (index + 1) * 800);
-        });
-    }
+                Object.keys(this.realtimeAppSection).forEach((key, index) => {
+                    setTimeout(() => {
+                        this.realtimeAppSection[key] = true;
+                    }, (index + 1) * 600)
+                });
+
+                Object.keys(this.systemInformationSection).forEach((key, index) => {
+                    setTimeout(() => {
+                        this.systemInformationSection[key] = true;
+                    }, (index + 1) * 800);
+                });
+            }, 1000);
+        }
+    },
+    methods: {
+        loadGunungan() {
+            const gununganSrc = 'storage/Gunungan.svg';
+
+            const img1 = new Image();
+            const img2 = new Image();
+            img1.src = gununganSrc;
+            img2.src = gununganSrc;
+
+            let loadedCount = 0;
+            const onLoadHandler = () => {
+                loadedCount++;
+                if (loadedCount === 2) {
+                    this.gununganImages.push(gununganSrc, gununganSrc); // Masukkan ke array
+                }
+            };
+            
+            img1.onload = onLoadHandler;
+            img2.onload = onLoadHandler;
+            this.loadedGunungan = true;
+        }
+    },
 }
 </script>
-
-<style scoped>
-::ng-deep .apexcharts-grid {
-  stroke-width: 0.1px !important;
-}
-::ng-deep .apexcharts-grid-borders {
-  stroke-width: 0.1px !important;
-}
-</style>
